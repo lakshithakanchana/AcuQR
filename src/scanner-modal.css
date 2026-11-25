@@ -1,0 +1,147 @@
+#acu-qr-modal-overlay {
+    position: fixed !important; 
+    top: 0 !important; 
+    left: 0 !important;
+    right: 0 !important; /* Added to bind to screen */
+    bottom: 0 !important; /* Added to avoid 100vh mobile issues */
+    background: rgba(0,0,0,0.95) !important; 
+    z-index: 2147483647 !important;
+    display: none; 
+    flex-direction: column !important;
+    font-family: 'Roboto', 'Segoe UI', sans-serif !important; 
+    box-sizing: border-box !important;
+}
+
+/* Material Header Layout */
+#acu-qr-header {
+    background: #ffffff !important; 
+    padding: 10px 16px !important; 
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2) !important;
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+    position: relative !important;
+}
+
+.header-section {
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Swapped Alignments */
+.header-section.left { flex-grow: 1 !important; justify-content: flex-start !important; }
+.header-section.right { flex-shrink: 0 !important; margin-left: 15px !important; justify-content: flex-end !important; }
+
+/* Material Graphical Icon Button (Close) */
+.md-icon-btn {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    border-radius: 50% !important; /* Makes the ripple effect circular */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.md-icon-btn svg {
+    width: 28px !important;
+    height: 28px !important;
+}
+
+.md-error { color: #d32f2f !important; }
+.md-icon-btn:active { background-color: rgba(211, 47, 47, 0.12) !important; }
+
+/* Material Select Dropdown */
+.md-select {
+    font-family: 'Roboto', 'Segoe UI', sans-serif !important;
+    font-size: 14px !important;
+    color: #333 !important;
+    padding: 8px 32px 8px 12px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 6px !important;
+    background-color: #f8f9fa !important;
+    appearance: none !important; 
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px top 50% !important;
+    background-size: 10px auto !important;
+    max-width: 220px !important; /* Slightly wider now that it has more room */
+    cursor: pointer !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}
+
+.md-select:focus {
+    outline: none !important;
+    border-color: #1976d2 !important;
+    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2) !important;
+}
+
+/* Reader Container */
+#acu-qr-reader-container {
+    flex: 1 1 auto !important; /* Allows it to shrink so it doesn't push text off screen */
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: center !important;
+    padding: 20px !important; 
+    overflow: hidden !important;
+    min-height: 0 !important; /* Crucial for flexbox on mobile */
+}
+
+#acu-qr-reader {
+    width: 100% !important; 
+    max-width: 500px !important; 
+    max-height: 100% !important; /* Prevents overflow */
+    background: #000 !important; 
+    border-radius: 8px !important; 
+    overflow: hidden !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important;
+}
+
+#acu-qr-status {
+    flex: 0 0 auto !important; /* Locks it to the bottom */
+    color: white !important; 
+    text-align: center !important; 
+    padding: 20px !important; 
+    font-size: 16px !important; 
+    font-weight: 500 !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* New Native Zoom Slab Buttons */
+#acu-zoom-controls {
+    /* We will use JS to make this 'flex' once the camera loads successfully */
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px; /* Pushes it right below the status text */
+    margin-bottom: 15px;
+}
+
+.acu-zoom-btn {
+    background-color: #f1f3f4;
+    color: #3c4043;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* The active state (blue) to show the current zoom level */
+.acu-zoom-btn.active {
+    background-color: #1a73e8;
+    color: #ffffff;
+    border-color: #1a73e8;
+    box-shadow: 0 4px 6px rgba(26,115,232,0.3);
+}

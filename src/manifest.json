@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "Acumatica QR Scanner Native",
+  "version": "14.8.3",
+  "description": "Native Modal QR Scanner for Acumatica Inventory (Kiwi/Chrome)",
+  "icons": {
+    "48": "icon.png",
+    "96": "icon.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "html5-qrcode.min.js",
+        "scanner-ui.js",
+        "acumatica-override.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "css": [
+        "scanner-modal.css"
+      ],
+      "js": [
+        "bridge.js"
+      ],
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "iframe.js"
+      ],
+      "all_frames": true
+    }
+  ]
+}
