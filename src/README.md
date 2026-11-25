@@ -1,3 +1,6 @@
+# Demo Video
+Watch the demo and training video below to see the application in action.
+
 # AcuQR Scanner Setup & Optimizations
 
 This directory contains the AcuQR extension designed to optimize barcode scanning inside Acumatica, specifically tailored for enterprise hardware like the **Zebra TC27-ER / TC27-ES**.
